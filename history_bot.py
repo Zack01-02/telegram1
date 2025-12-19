@@ -144,8 +144,11 @@ async def handle_manual_input(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text(f"❌ خاطئ. السنة الصحيحة هي {correct}")
 
     del user_data[user_id]
+    
 
 if __name__ == "__main__":
+    print("قيمة التوكن:", TOKEN)
+
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(handle_choice, pattern="^(full_quiz|single_question|manual_input)$"))
@@ -156,6 +159,7 @@ if __name__ == "__main__":
 
 print("البوت يعمل الآن...")
 app.run_polling()
+
 
 
 
