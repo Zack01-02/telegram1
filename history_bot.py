@@ -1,8 +1,9 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes, MessageHandler, filters
 import random
+import os
+TOKEN = os.getenv("BOT_TOKEN")
 
-TOKEN = "8511138679:AAG177hgqvQNkZugSYRPvarC22GM00i_oI4"
 
 QUESTIONS = [
     {"event": "اندلاع الثورة الجزائرية ضد الاستعمار الفرنسي", "year": "1954", "choices": ["1952", "1954", "1956", "1960"]},
@@ -153,4 +154,5 @@ if __name__ == "__main__":
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_manual_input))
     print("البوت يعمل الآن...")
     app.run_polling()
+
 
