@@ -152,8 +152,18 @@ if __name__ == "__main__":
     app.add_handler(CallbackQueryHandler(handle_number_of_questions, pattern="^(3|5|7)$"))
     app.add_handler(CallbackQueryHandler(button))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_manual_input))
-    print("البوت يعمل الآن...")
-    app.run_polling()
+    import os
+
+PORT = int(os.environ.get("PORT", 8443))  # Render يعطيك port تلقائي
+print("البوت يعمل الآن...")
+
+app.run_webhook(
+    listen="0.0.0.0",
+    port=PORT,
+    url_path=TOKEN,
+    webhook_url=f"https://telegram1-s.onrender.com/{TOKEN}"
+)
+
 
 
 
