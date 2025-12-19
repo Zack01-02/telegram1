@@ -4,7 +4,6 @@ import random
 
 TOKEN = "8511138679:AAG177hgqvQNkZugSYRPvarC22GM00i_oI4"
 
-# قائمة الأحداث والتواريخ (20 حدثًا)
 QUESTIONS = [
     {"event": "اندلاع الثورة الجزائرية ضد الاستعمار الفرنسي", "year": "1954", "choices": ["1952", "1954", "1956", "1960"]},
     {"event": "استقلال الجزائر عن فرنسا", "year": "1962", "choices": ["1960", "1961", "1962", "1963"]},
@@ -28,7 +27,7 @@ QUESTIONS = [
     {"event": "أزمة فيتنام الكبرى", "year": "1965", "choices": ["1964", "1965", "1966", "1967"]}
 ]
 
-# تخزين حالة كل مستخدم
+
 user_data = {}
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -69,7 +68,7 @@ async def handle_number_of_questions(update: Update, context: ContextTypes.DEFAU
     num_questions = min(int(query.data), len(QUESTIONS))
     await query.answer()
 
-    # تهيئة بيانات الجولة مع تخزين العدد الأصلي
+    
     user_data[user_id] = {
         "mode": "full_quiz",
         "score": 0,
@@ -154,3 +153,4 @@ if __name__ == "__main__":
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_manual_input))
     print("البوت يعمل الآن...")
     app.run_polling()
+
